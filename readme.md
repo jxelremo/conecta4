@@ -1,10 +1,11 @@
+# Conecta4
 En el fichero heuristica.py se encuentran implementadas las diferentes heurísticas, una para cada dificultad.
 Tambien se encuentra la implementación de memoize usada por cada heurística.
 El fichero run.py se implemento de modo que pregunta que jugador empezará (X = maquina, O = humano),
 y la dificultad de la máquina.
 En games.py se añadió una clase para darle color al tablero.
 
-heuristica.py
+## heuristica.py
 Para el nivel fácil tenemos h0, la cual siempre devuelve 0.
 Para el medio tenemos h1, que retorna un valor aletaorio entre 100 y -100
 Para el difícil tenemos h2, usa el metodo compute_utility (que calcula el valor
