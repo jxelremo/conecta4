@@ -13,7 +13,7 @@ player = 'X'
 dificultad1 = 'heuristica'
 dificultad2 = 'none'
 jugadas = 0
-prof = 1
+prof = 4
 
 while dificultad1 == 'heuristica':
     print "Seleccion de dificultad: "
