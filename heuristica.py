@@ -26,10 +26,12 @@ def calculate_weights(state, pos):
     # Con los pesos favorecemos jugar abajo y en el centro del tablero
     weights_c = [4, 8, 16, 32, 16, 8, 4]
     weights_f = [32, 16, 8, 4, 2, 1]
+    # Es un hueco
     if pos in state.moves:
-        result = weights_c[pos[0] - 1] * weights_f[pos[1] - 1]
-    else:
         result = weights_c[pos[0] - 1] * weights_f[pos[1] - 1] / 2
+    # Es una ficha
+    else:
+        result = weights_c[pos[0] - 1] * weights_f[pos[1] - 1]
     return result
 
 
