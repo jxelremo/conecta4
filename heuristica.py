@@ -35,11 +35,19 @@ def calculate_weights(state, pos):
     return result
 
 
+def calculate_delta(move, op, (delta_x, delta_y)):
+    if op == '+':
+        pos = (move[0] + delta_x, move[1] + delta_y)
+    else:
+        pos = (move[0] - delta_x, move[1] - delta_y)
+    return pos
+
+
 def k_in_row(state, player, op, (delta_x, delta_y)):
     board = state.board
     htotal = 0
     for move in legal_moves(state):
-        pos = (move[0] + delta_x, move[1] + delta_y)
+        pos = calculate_delta(move, op, (delta_x, delta_y))
         h = 0
         good = 0
         # Mientras sea una posicion legal calculamos su valor para un maximo de 3 desplazamientos
@@ -51,10 +59,7 @@ def k_in_row(state, player, op, (delta_x, delta_y)):
             elif pos in state.moves:
                 h += calculate_weights(state, pos)
             # Actualizamos las posiciones
-            if op == '+':
-                pos = (pos[0] + delta_x, pos[1] + delta_y)
-            else:
-                pos = (pos[0] - delta_x, pos[1] - delta_y)
+            pos = calculate_delta(move, op, (delta_x, delta_y))
             good += 1
         # Si es un potencial 4 en raya sumamos su valor heuristico
         if good == 3:
