@@ -39,7 +39,8 @@ def k_in_row(state, player, (delta_x, delta_y)):
             if board.get(pos) == player:
                 # Si la ficha anterior es nuestra
                 if board.get(pos[0] - delta_x, pos[1] - delta_y) == player:
-                    h1 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1] * 2
+                    h1 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1]
+                    h1 += weights_c[pos[0] - delta_x - 1] * weights_f[pos[1] - delta_y - 1]
                 # Si la ficha anterior es un hueco
                 else:
                     h1 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1]
@@ -67,7 +68,8 @@ def k_in_row(state, player, (delta_x, delta_y)):
             if board.get(pos) == player:
                 # Si la ficha anterior es nuestra
                 if board.get(pos[0] + delta_x, pos[1] + delta_y) == player:
-                    h2 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1] * 2
+                    h2 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1]
+                    h2 += weights_c[pos[0] + delta_x - 1] * weights_f[pos[1] + delta_y - 1]
                 # Si la ficha anterior es un hueco
                 else:
                     h2 += weights_c[pos[0] - 1] * weights_f[pos[1] - 1]

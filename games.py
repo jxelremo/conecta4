@@ -114,14 +114,17 @@ def alphabeta_search(state, game, d=4, cutoff_test=None, eval_fn=None):
     #     print i
     #     print "------\n"
 
-
     valores = []
+    boards = []
     for a, s in lista:
         valores.append(min_value(s, -infinity, infinity, 0))
+        boards.append(s.board)
 
-    print valores
-    print "Valores h: ", min_value(s, -infinity, infinity, 0)
-    print "Board: ", s.board
+    print "Heuristics: ", valores
+    # print "Valores h: ", min_value(s, -infinity, infinity, 0)
+    print "Select: ", max(valores)
+    # print "Board: ", s.board
+    print "Board: ", boards[(valores.index(max(valores)))]
 
     action, state = argmax(lista,
                           lambda ((a, s)): min_value(s, -infinity, infinity, 0))
